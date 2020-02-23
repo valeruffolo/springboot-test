@@ -3,7 +3,6 @@ package guru.springframework.services;
 import guru.springframework.commands.ProductForm;
 import guru.springframework.converters.ProductFormToProduct;
 import guru.springframework.domain.Product;
-import guru.springframework.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,37 +15,38 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepository productRepository;
+   // private ProductRepository productRepository;
     private ProductFormToProduct productFormToProduct;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, ProductFormToProduct productFormToProduct) {
-        this.productRepository = productRepository;
-        this.productFormToProduct = productFormToProduct;
+    public ProductServiceImpl( ProductFormToProduct productFormToProduct) {
+       // this.productRepository = productRepository;
+       // this.productFormToProduct = productFormToProduct;
     }
 
 
     @Override
     public List<Product> listAll() {
         List<Product> products = new ArrayList<>();
-        productRepository.findAll().forEach(products::add); //fun with Java 8
+        //productRepository.findAll().forEach(products::add); //fun with Java 8
         return products;
     }
 
     @Override
     public Product getById(Long id) {
-        return productRepository.findById(id).orElse(null);
+        //return productRepository.findById(id).orElse(null);
+    	return new Product();
     }
 
     @Override
     public Product saveOrUpdate(Product product) {
-        productRepository.save(product);
+       // productRepository.save(product);
         return product;
     }
 
     @Override
     public void delete(Long id) {
-        productRepository.deleteById(id);
+       // productRepository.deleteById(id);
 
     }
 
