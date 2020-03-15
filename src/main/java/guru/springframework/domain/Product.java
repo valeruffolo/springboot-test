@@ -5,7 +5,7 @@ package guru.springframework.domain;
 import java.math.BigDecimal;
 
 
-//@Entity
+@Entity
 public class Product {
 
     //@Id
